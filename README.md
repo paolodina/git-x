@@ -4,7 +4,7 @@ A simple bash script to run git commands into multiple nested git repositories.
 
 It is great for projects that are split into multiple repositories.
 
-The tool detects nested git repositories (one level deep) and run any command you pass to it on each nested repository:
+The tool detects nested git repositories (one level deep by default) and run any command you pass to it on each nested repository:
 
 ```bash
 git x status
@@ -15,7 +15,7 @@ git x <any valid git command and arguments>
 
 ## Motivation
 
-It has become a common practice these days to break bigger projects into smaller ones. Take the example bellow:
+It has become a common practice these days to break bigger projects into smaller ones. Take the example below:
 
 ```
 .
@@ -84,6 +84,19 @@ This file then can be checked into source control and latter be used to clone al
 ```bash
 git x clone
 ```
+
+## Deeply nested repositories
+
+To detect deeper repositories just run:
+```bash
+GITX_DEPTH=n git x status # adjust the value accordingly
+```
+or
+```bash
+export GITX_DEPTH=n
+git x status
+```
+or to make it permanent, set the environment variable in the shell initialization file (it could be `~/.bashrc`).
 
 ## Instalation
 

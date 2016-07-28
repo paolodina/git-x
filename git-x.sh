@@ -1,6 +1,9 @@
 #!/bin/bash
 
-directories=($(find . -maxdepth 2 -type d -name .git ! -path ./.git | sed 's/\/\.git//' | sed 's/\.\///' | sort))
+depth=${GITX_DEPTH:-2}
+echo gitx_depth: $depth
+
+directories=($(find . -maxdepth $depth -type d -name .git ! -path ./.git | sed 's/\/\.git//' | sed 's/\.\///' | sort))
 parentGitRepository=`find . -maxdepth 1 -name .git`
 export arguments=$@
 
